@@ -1,6 +1,5 @@
 package com.example.myapplication.activities;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
@@ -44,10 +43,11 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putBoolean("isLogin", true);
                 editor.apply();
 
-                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
-                finish(); // Go back to previous screen
+                Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                setResult(RESULT_OK); // Trả kết quả về cho màn hình gọi nó
+                finish(); 
             } else {
-                Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
             }
         });
     }
