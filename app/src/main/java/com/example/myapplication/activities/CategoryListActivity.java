@@ -2,6 +2,7 @@ package com.example.myapplication.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import java.util.List;
 public class CategoryListActivity extends AppCompatActivity {
 
     private RecyclerView rvCategories;
+    private Button btnViewCartCat;
     private AppDatabase db;
     private CategoryAdapter adapter;
 
@@ -25,6 +27,7 @@ public class CategoryListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category_list);
 
         rvCategories = findViewById(R.id.rvCategories);
+        btnViewCartCat = findViewById(R.id.btnViewCartCat);
         rvCategories.setLayoutManager(new LinearLayoutManager(this));
 
         db = AppDatabase.getInstance(this);
@@ -37,5 +40,10 @@ public class CategoryListActivity extends AppCompatActivity {
             startActivity(intent);
         });
         rvCategories.setAdapter(adapter);
+
+        btnViewCartCat.setOnClickListener(v -> {
+            Intent intent = new Intent(this, CheckoutActivity.class);
+            startActivity(intent);
+        });
     }
 }

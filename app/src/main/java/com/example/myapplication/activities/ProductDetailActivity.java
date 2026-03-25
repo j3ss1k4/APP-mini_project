@@ -25,7 +25,7 @@ import java.util.Locale;
 public class ProductDetailActivity extends AppCompatActivity {
 
     private TextView tvName, tvPrice, tvDescription;
-    private Button btnAddToCart;
+    private Button btnAddToCart, btnViewCartDetail;
     private AppDatabase db;
     private Product product;
     private SharedPreferences sp;
@@ -50,6 +50,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         tvPrice = findViewById(R.id.tvDetailPrice);
         tvDescription = findViewById(R.id.tvDetailDescription);
         btnAddToCart = findViewById(R.id.btnAddToCart);
+        btnViewCartDetail = findViewById(R.id.btnViewCartDetail);
 
         db = AppDatabase.getInstance(this);
         sp = getSharedPreferences("LOGIN", MODE_PRIVATE);
@@ -72,6 +73,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                 // Đã đăng nhập -> Nhặt hàng luôn
                 addToCart();
             }
+        });
+
+        btnViewCartDetail.setOnClickListener(v -> {
+            Intent intent = new Intent(this, CheckoutActivity.class);
+            startActivity(intent);
         });
     }
 
